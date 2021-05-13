@@ -1,0 +1,138 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ee586f24b6.js" crossorigin="anonymous"></script>
+    <title>Pagina Principal</title>
+</head>
+
+
+<body>
+    
+    <div class="container">
+        <div class="content first-content">
+            <div class="first-colum">
+                <h2 class="title title-welcome">-------</h2>
+                <p class="description description-primary">Bem-vindo!</p>
+                <p class="description description-primary">logar com suas informações </p>
+                <button id="signin" class="btn btn btn-primary">sign in</button>
+            </div>
+            <div class="second-colum">
+                <h2 class="title title-second"> Criar conta!</h2>
+                
+                <div class="social-media">
+                    <ul class="lista-social-media">
+                        <a class="link-social" href="#">
+                            <li class="item-social-midia">
+                                <i class="fab fa-facebook-square"></i>
+                            </li>
+                            <a class="link-social" href="#">
+                                <li class="item-social-midia">
+                                    <i class="fab fa-linkedin"></i>
+                                </li>
+                            </a>
+                            <a class="link-social" href="#">
+                                <li class="item-social-midia">
+                                    <i class="fab fa-github-square"></i>
+                                </li>
+                            </a>
+                    </ul>
+                </div>
+             
+
+                <!------ social media-->
+                <p class="description description-second">utilize seu email para registro</p>
+                {% load sweetify %}
+                {% sweetify %}
+                <form class="formulario" action="{%  url 'cadastro'  %}"  method="POST">
+                    {% csrf_token %}
+                    <label class="label.input" for="">
+                        <i class="fas fa-user icon-modify"></i>
+                        <input type="text" name="name"  placeholder="Nome"required>
+                    </label>
+
+                    <label class="label.input" for="">
+                        <i class="fas fa-envelope icon-modify"></i>
+                        <input type="email" name="email" placeholder="Email"required>
+                    </label>
+
+                    <label class="label.input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" name="password" placeholder="Senha" id="password" required>
+                    </label>     
+
+                    <label class="label.input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" name="password2" placeholder="Confirmar Senha" id="confirm_password" required>
+                    </label>     
+                    <button class="btn btn-second">sign up</button>
+                </form>
+            </div>
+            <!------ segunda coluna-->
+        </div>
+        <!---- primeiro content-->
+        <div class="content second-content">
+            <div class="first-colum">
+                <h2 class="title title-welcome">Olá</h2>
+                <p class="description description-primary">Insira seus dados pessoais</p>
+                <p class="description description-primary">Inicie sua jornada conosco</p>
+                <button id="signup" class="btn btn-primary">sign up</button>
+            </div>
+            <div class="second-colum">
+                <h2 class="title title-second">signin in to Developer!</h2>
+                <div class="social-media">
+                    <ul class="lista-social-media">
+                        <a class="link-social" href="#">
+                            <li class="item-social-midia">
+                                <i class="fab fa-facebook-square"></i>
+                            </li>
+                            <a class="link-social" href="#">
+                                <li class="item-social-midia">
+                                    <i class="fab fa-linkedin"></i>
+                                </li>
+                            </a>
+                            <a class="link-social" href="#">
+                                <li class="item-social-midia">
+                                    <i class="fab fa-github-square"></i>
+                                </li>
+                            </a>
+                    </ul>
+                </div>
+                <!------ social media-->
+                <p class="description description-second">or use your email account</p>
+                <form class="formulario" action="{%  url 'login'  %}"  method="POST">
+                    {% csrf_token %}
+                    <label class="label.input" for="">
+                        <i class="fas fa-envelope icon-modify"></i>
+                        <input type="email" name="email" placeholder="Email">
+                    </label>
+                    <label class="label.input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" name="password" placeholder="Senha">
+                    </label>
+                    <a class="password" href="#">Esqueceu sua senha?</a>
+                    <button class="btn btn-second">Sign in</button>
+
+                </form>
+            </div>
+            <!--- segunda coluna-->
+        </div>
+        <!--- segunda content-->
+    </div>
+    
+    <script src="{% static 'js/app.js' %}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    {% include 'partials/_alertas.html' %}      
+
+</body>
+
+</html>
+{% endblock %}

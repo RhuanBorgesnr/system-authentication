@@ -1,0 +1,19 @@
+{%  if messages %}
+            {% for message in messages %} 
+              <script>
+                  swal.fire({
+                      "title": "Parabéns",
+                      "text": "{{message}}",
+                      "icon":"success",
+                  })
+                     Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '{{message}}',
+                    })
+             
+         </script>    
+            {% endfor %}
+            {% endif %}
+            {% block js %}
+        {% endblock %}
